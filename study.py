@@ -1,5 +1,7 @@
 import numpy as np
 from pprint import pprint
+import sys
+
 #안녕
 d = np.array([[1,2,3,4,5],
     [2,4,5,6,7],
@@ -27,3 +29,15 @@ def no_param_method():
 # 올바른 호출문은 test_method(2, 3)과 no_param_method() 이다
 test_method
 no_param_method
+
+print(sys.path)
+print("\\    /\\")
+print(" )  ( \')")
+print("(  /  )")
+print(" \\(__)|")
+"""
+\    /\
+ )  ( ')
+(  /  )
+ \(__)|
+"""

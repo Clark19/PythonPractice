@@ -27,3 +27,6 @@ def solver(input1, input2, input3):
 
 solution = solver(7, 11, 17)
 print(solution)
+
+
+
