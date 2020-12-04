@@ -38,8 +38,44 @@ def show_reverse(list):
 def show_reverse2(list):
     for i in range(len(list)):
         print(list[(i+1) * -1], end=", ")
-
+print()
 str = "ABCDEFG"
 # str1 = str.
 show_reverse2(str)
 # show_reverse([1,2,3,4,5])
+
+print(min(str))
+print(max(str))
+
+st = [1,2]
+st[2:] = [3,4,5]
+print(st)
+
+def main():
+    print("main:")
+    num = 5; #int(input("input number: "))
+    if num > 0:
+        print("+")
+    elif num < 0:
+        print("-")
+    else:
+        print("0")
+
+    print( 1 < num < 5)
+
+    num = 0
+    while num < 10:
+        print(num, end = " ")
+        num += 1
+    print()
+
+    num = 0
+    expression = 3 * num /2
+    while expression != 63:
+        num += 1
+        expression = 3*num / 2
+    print(num)
+
+main()
+
+
