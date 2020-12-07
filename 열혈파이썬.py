@@ -76,6 +76,16 @@ def main():
         expression = 3*num / 2
     print(num)
 
+    dc = {
+        'clark': {'name': '박진화', 'minbun': 8001021, 'gender': '남성', 'height': 176},
+        'minhye9': {'name': '구민혜', 'minbun': 8305312, 'gender': '여성', 'height': 170}
+    }
+
+    print(dc['clark'])
+    print(dc['minhye9'])
+    print(dc['clark']['gender'])
+    print(dc['minhye9']['gender'])
+
 main()
 
 
