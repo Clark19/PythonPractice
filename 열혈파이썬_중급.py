@@ -47,6 +47,16 @@ print(next(ir))
 print(next(ir))
 try: print(next(ir))
 except StopIteration as e: print('StopIteration exception',e)
-
 print(dir(ds))
 print(hasattr(ds, '__iter__'))
+
+# iterator 객체는 iterable 객체이다 -> for 루프에 와도 됨.
+ir = iter([1,2,3])
+for i in ir:
+    print(i, end =' ')
+print()
+ir1 = iter([1,2,3])
+ir2 = iter(ir1)
+print(ir1 is ir2) # True
+print(id(ir1))
+print(id(ir2)) # ir1 is ir2.
