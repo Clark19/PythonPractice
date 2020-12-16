@@ -4,6 +4,8 @@
  : 이름 없이 만들어진 함수를 가리켜 '람다 함수(lambda function)' 또는 '람다식(lambda expression) 또는 람다(lambda)라 부른다'
  : 람다의 기본 구조: lambda [args(매개변수)]: expression(함수내용/몸체)
 """
+import collections
+
 # 객체인 함수 실습
 def make_exponent(exp):
     def exponent(base_num):
@@ -34,3 +36,17 @@ print(f'3의 4승 = {exp(3, 4)}')
 showExpResult = lambda base, exponent: print(f'{base} to the {exponent}th power:', exp(base, exponent))
 showExpResult(5, 3)
 print('5 to the 3th power', str(exp(5, 3)))
+
+
+# Iterable 객체, Iterator 객체 실습
+ds = [1,2,3,4]
+ir = iter(ds)
+print(next(ir)) # special method 직접 호출하지 않아도 인터프리터에 의해 호출되는 메서드 : 형태 = __xx__
+print(next(ir))
+print(next(ir))
+print(next(ir))
+try: print(next(ir))
+except StopIteration as e: print('StopIteration exception',e)
+
+print(dir(ds))
+print(hasattr(ds, '__iter__'))
