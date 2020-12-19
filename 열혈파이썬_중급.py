@@ -49,3 +49,52 @@ for person in [a, b, c]:
     print("이름:%s" % person.name)
     print("나이:%s" % person.age)
     print("직업:%s" % person.job)
+
+
+
+# Iterable 객체, Iterator 객체 실습
+ds = [1,2,3,4]
+ir = iter(ds)
+print(next(ir)) # special method 직접 호출하지 않아도 인터프리터에 의해 호출되는 메서드 : 형태 = __xx__
+print(next(ir))
+print(next(ir))
+print(next(ir))
+try: print(next(ir))
+except StopIteration as e: print('StopIteration exception',e)
+print(dir(ds))
+print(hasattr(ds, '__iter__'))
+
+# iterator 객체는 iterable 객체이다 -> for 루프에 와도 됨.
+ir = iter([1,2,3])
+for i in ir:
+    print(i, end =' ')
+print()
+ir1 = iter([1,2,3])
+ir2 = iter(ir1)
+print(ir1 is ir2) # True
+print(id(ir1))
+print(id(ir2)) # ir1 is ir2.
+
+
+# set, srozenset
+A = set(['a', 'c','d','f'])
+B = set('fdca')
+print(A)
+print(B)
+print(A==B)
+B.add('p')
+print('a' in A)
+print('b' not in B)
+for c in A & B:
+    print(c, end=' ')
+d = {} # empty dictionary
+print(type(d))
+s = set() # empty set
+print(type(s))
+
+# removing duplication in using Set
+t = [3,3,3,7,7,'z','z']
+t = list(set(t))
+print(t)
+
+
