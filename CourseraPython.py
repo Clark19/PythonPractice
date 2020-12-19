@@ -33,7 +33,6 @@ while True:
 print("Maximum is", largest)
 print("Minimum is", smallest)
 
-
 """
 7.2 Write a program that prompts for a file name, then opens that file and reads through the file, looking for lines
  of the form: X-DSPAM-Confidence:    0.8475
@@ -103,3 +102,73 @@ for line in fh:
     count += 1
 
 print("There were", count, "lines in the file with From as the first word")
+
+
+# !제일 많이 나오는 단어를 리턴하는 코드(From 텍스트 파일): 텍스트 라인들을 읽어, 나오는 단어들을 분류
+"""
+9.4 Write a program to read through the mbox-short.txt and figure out who has sent the greatest number of mail messages.
+ The program looks for 'From ' lines and takes the second word of those lines as the person who sent the mail. 
+ The program creates a Python dictionary that maps the sender's mail address to a count of the number of times 
+ they appear in the file. After the dictionary is produced, the program reads through the dictionary using a maximum 
+ loop to find the most prolific committer.
+"""
+name = input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+
+wordCount = dict()
+pieces = list()
+for line in handle:
+    if not line.startswith('From '): continue
+    pieces = line.split()
+    wordCount[pieces[1]] = wordCount.get(pieces[1], 0) + 1
+
+bigWord = None
+bigCnt = None
+for word, cnt in wordCount.items():
+    if bigCnt is None or cnt > bigCnt:
+        bigWord = word
+        bigCnt = cnt
+
+print(bigWord, bigCnt)
+
+
+# 출현 빈도 탑 10 단어 추출 코드: The top 10 most common words
+fhand = open('romeo.txt')
+counts = {}
+
+for line in fhand:
+    words = line.split()
+    for word in words:
+        counts[word] = counts.get(word, 0 ) + 1
+
+lst = []
+for key, val in counts.items():
+    newtup = (val, key)
+    lst.append(newtup)
+
+lst = sorted(lst, reverse=True)
+for val, key in lst[:10] :
+    print(key, val)
+
+
+"""
+10.2 Write a program to read through the mbox-short.txt and figure out the distribution by hour of the day for each of the messages. You can pull the hour out from the 'From ' line by finding the time and then splitting the string a second time using a colon.
+From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+Once you have accumulated the counts for each hour, print out the counts, sorted by hour as shown below.
+"""
+name = input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+enumerate()
+hourCnt = dict()
+for line in handle:
+    if not line.startswith('From '): continue
+    pieces = line.split()
+    time = pieces[5].split(':')
+    hour = time[0]
+    hourCnt[hour] = hourCnt.setdefault(hour,0) + 1
+
+list = sorted([(k,v) for k,v in hourCnt.items()])
+for k, v in list:
+    print(k, v)

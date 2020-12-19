@@ -34,3 +34,18 @@ print(f'3의 4승 = {exp(3, 4)}')
 showExpResult = lambda base, exponent: print(f'{base} to the {exponent}th power:', exp(base, exponent))
 showExpResult(5, 3)
 print('5 to the 3th power', str(exp(5, 3)))
+
+
+# namedtuple 사용 예
+from collections import namedtuple
+
+Person = namedtuple("Person", ["name", "age", "job"])
+
+a = Person(name="홍길동", age=25, job="Programmer")
+b = Person("김철수", 32, "Manager")
+c = Person("김영희", 41, "Designer")
+
+for person in [a, b, c]:
+    print("이름:%s" % person.name)
+    print("나이:%s" % person.age)
+    print("직업:%s" % person.job)
