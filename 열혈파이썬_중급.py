@@ -95,6 +95,84 @@ print(type(s))
 # removing duplication in using Set
 t = [3,3,3,7,7,'z','z']
 t = list(set(t))
-print(t)
+print(t); print()
+
+# 정렬
+ns = [('Park', 29), ('Yoon', 33), ('Lee', 12), ('Park', 11)]
+def age(t):
+    return t[1]
+ns.sort(key=age, reverse=True)
+ns.sort(key = lambda t : t[1], reverse=True)
+# ns.sort()
+print('ns:', ns)
+
+# dictionary 에 대한 정렬
+dic = {'cd': 7, 'ab': 10, 'cc':7, 'gh': 8, 'cf':7, 'ef':9}
+# sdic = sorted(dic.items()) # 키 이외의 다른 값도 정렬하고 싶으면 dict.items() 방식 사용하지 말것.
+sdiclist = [(k,v) for k,v in dic.items()]
+# sdiclist.sort() # 원본 수정 방식
+# sdiclist.sort(key= lambda t: t[1], reverse=True)
+lst = sorted(sdiclist) # 원본 수정않고 새 리스트 생성 방식
+lst = sorted(lst, key=lambda t: t[1], reverse=True)
+print(f'dic: {dic}')
+print('sdiclist', sdiclist)
+print(f'SORTED() DICT: {lst}')
+
+org = ('321', '214', '197')
+cpy = tuple(sorted(org, key=lambda s: s[0]))
+print(cpy)
 
 
+names = ['윤나은', '김현주', '장현지', '이지선', '박선주']
+dnames = {k:v for k,v in enumerate(sorted(names), 1)}
+print(f'\ndnames: {dnames}')
+
+# 표현식 기반 문자열 조합
+print('\n표현식 기반 문자열 조합')
+s = 'My friend %s is %d years old and %fcm tall.' % ('Jung', 22, 178.5)
+print('문자열 조합:', s)
+s = 'My friend %s is %s years old and %scm tall.' % ('Jung', 22, 178.5)
+print('문자열 조합2:', s)
+dic = {'name': 'Yoon', 'age': 22}
+s = "%(name)s : %(age)d" % dic
+s2 = "%(name)s : %(age)d" % {'name': 'Yoon', 'age': 22}
+print('문자열 조합3-1-(딕셔너리 이용):', s)
+print('문자열 조합3-2-(딕셔너리 이용):', s2)
+
+print('height: %f' % 3.14)
+print('height: %.2f' % 3.14)
+print('height: %7.2f' % 3.14)
+print('height: %07.2f' % 3.14)
+print('height: %010.2f' % 3.14)
+print('height: %-7.2f입니다.' % 3.14)
+print('height: %-10.2f입니다.' % 3.14)
+print('num: %+d' % 3)
+print('num: %+d' % -1)
+print('height: %-+10.3f' % 3.14)
+print('%(h)s: %(v)-+10.3f' % {'h': 'height', 'v': 3.14})
+
+# 메서드 기반 문자열 조합: (장점) 표현식(%)기반보다 다양한 옵션 지정가능 & 코드 유연하게 작성가능(ex. 언패킹 활용)
+print('\n메서드 기반 문자열 조합: (장점) 표현식(%)기반보다 다양한 옵션 지정가능 & 코드 유연하게 작성가능(ex. 언패킹 활용)')
+print('{0}...{1}...{2}'.format('Robot', 125, 'Box'))
+print('{2}...{1}...{0}'.format('Robot', 125, 'Box'))
+print('{}...{}...{}'.format('Robot', 125, 'Box'))
+print('{toy}...{num}...{item}'.format(toy='Robot', num=125, item='Box'))
+my = ['Robot', 125, 'Box']
+print('언패킹 방식: {0}...{1}...{2}'.format(*my))
+print('배열 방식: {0}...{1}...{2}'.format(my[0], my[1], my[2]))
+my = ['Box', (24, 31)]
+print('인덱싱 방식: {0[0]}...{0[1]}...{1[0]}..{1[1]}'.format(*my))
+d = {'toy': 'Robot', 'price': 3500}
+print('toy = {0[toy]}, price = {0[price]}'.format(d))
+print('표현식 기반 문자열 조합: %9.4f' % 3.14)
+print('메서드 기반 문자열 조합: {0:9.4f}'.format(3.14))
+print('w정렬: {0:<10.4f}'.format(3.14))
+print('{0:>10.4f}'.format(3.14))
+print('{0:^10.4f}'.format(3.14))
+print('표현식 기반 문자열 조합: %+d, %+d' % (5, -5))
+print('메서드 기반 문자열 조합: {0:+d}, {1:+d}'.format(5, -5))
+print('메서드 기반 문자열 조합(생략1): {0:+}, {1:+}'.format(5, -5))
+print('메서드 기반 문자열 조합(생략2): {:+}, {:+}'.format(5, -5))
+print('{0:*^10.4f}'.format(3.14))
+print('{0:+<10}'.format(7))
+print('{0:^^10}'.format('hi'))
