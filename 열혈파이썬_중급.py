@@ -60,3 +60,27 @@ ir2 = iter(ir1)
 print(ir1 is ir2) # True
 print(id(ir1))
 print(id(ir2)) # ir1 is ir2.
+
+
+# set, srozenset
+A = set(['a', 'c','d','f'])
+B = set('fdca')
+print(A)
+print(B)
+print(A==B)
+B.add('p')
+print('a' in A)
+print('b' not in B)
+for c in A & B:
+    print(c, end=' ')
+d = {} # empty dictionary
+print(type(d))
+s = set() # empty set
+print(type(s))
+
+# removing duplication in using Set
+t = [3,3,3,7,7,'z','z']
+t = list(set(t))
+print(t)
+
+
