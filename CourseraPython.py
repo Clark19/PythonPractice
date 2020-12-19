@@ -13,7 +13,8 @@ and ignore the number. Enter 7, 2, bob, 10, and 4 and match the output below.
 largest = None
 smallest = None
 while True:
-    num = input("Enter a number: ")
+    # num = input("Enter a number: ")
+    num = "done"
     if num == "done" : break
     try:
         num2 = int(num)
@@ -43,6 +44,7 @@ below enter mbox-short.txt as the file name.
 """
 # Use the file name mbox-short.txt as the file name
 fname = input("Enter file name: ")
+if len(fname) < 1: fname = "mbox-short.txt"
 fh = open(fname)
 cnt = 0
 fnum = 0.0
@@ -65,6 +67,7 @@ and if not append it to the list. When the program completes, sort and print the
 You can download the sample data at http://www.py4e.com/code3/romeo.txt
 """
 fname = input("Enter file name: ")
+if len(fname) < 1: fname = 'romeo.txt'
 fh = open(fname)
 lst = list()
 words = list()
@@ -130,6 +133,7 @@ for word, cnt in wordCount.items():
         bigWord = word
         bigCnt = cnt
 
+print('\n제일 많이 나오는 단어: ')
 print(bigWord, bigCnt)
 
 
@@ -148,19 +152,21 @@ for key, val in counts.items():
     lst.append(newtup)
 
 lst = sorted(lst, reverse=True)
+print('\n출현 빈도 탑 10 단어 추출: ')
 for val, key in lst[:10] :
     print(key, val)
 
 
-"""
-10.2 Write a program to read through the mbox-short.txt and figure out the distribution by hour of the day for each of the messages. You can pull the hour out from the 'From ' line by finding the time and then splitting the string a second time using a colon.
+""" '하루에 이메일 받은 시간대별 분포:'
+10.2 Write a program to read through the mbox-short.txt and figure out the distribution by hour of the day for each of
+ the messages. You can pull the hour out from the 'From ' line by finding the time and then splitting the string 
+ a second time using a colon.
 From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
 Once you have accumulated the counts for each hour, print out the counts, sorted by hour as shown below.
 """
 name = input("Enter file:")
 if len(name) < 1 : name = "mbox-short.txt"
 handle = open(name)
-enumerate()
 hourCnt = dict()
 for line in handle:
     if not line.startswith('From '): continue
@@ -169,6 +175,8 @@ for line in handle:
     hour = time[0]
     hourCnt[hour] = hourCnt.setdefault(hour,0) + 1
 
+# 키값이 시간대라서 시간대별 순서대로 출력하기 위해 맵을 리스트롤 정렬
 list = sorted([(k,v) for k,v in hourCnt.items()])
+print('\n하루에 이메일 받은 시간대별 분포:')
 for k, v in list:
     print(k, v)
